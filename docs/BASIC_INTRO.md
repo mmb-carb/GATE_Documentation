@@ -1,25 +1,24 @@
 # UNDER CONSTRUCTION
 
-## Photochemic Modeling on a 3D Grid
+# GATE Basic Introduction
 
-> TODO: Describe what we want that for airplanes. Show current 3D plots.
+    Gridded Aircraft Trajectory Emissions Model
 
+The purpose of this document is give a clear understanding of what GATE is, and what it does. This is not meant as a guide to how to run GATE; you will find that in the [User Guide](USER_GUIDE.md).
 
-## Flight Paths in 3D
+## Introduction
 
-> TODO: Describe what we know about runways and flight paths. Show a 3D line plot.
-
-
-## Flight Paths on the 3D Grid
-
-> TODO: Intersect the above, for each runway, with the 3D grid. Show 3D box plot.
+> Coming Soon
 
 
-## Applying this to Emissions Inventories
+## How It Words
 
-> TODO: Emissions up to the ABL and Flight stage fractions
+> Coming Soon
 
 
-## Temporal Profiles
+## Example
 
-> TODO: The FAA has a lot of data.
+> Coming Soon
+
+
+[Back to Main Readme](../README.md)
