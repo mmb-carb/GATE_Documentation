@@ -1,6 +1,6 @@
 # GATE Basic Introduction - UNDER CONSTRUCTION
 
-    Gridded Aircraft Trajectory Emissions Model
+    Gridded Aircraft Trajectory Emissions model
 
 The purpose of this document is give a clear understanding of what GATE is, and what it does. This is not meant as a guide to how to run GATE; you will find that in the [User Guide](USER_GUIDE.md).
 
@@ -24,9 +24,19 @@ GATE is written in Python, using only free, open-source technology. It is a comm
 The above six-step process is achievable because so much information is publically reported on: the locations of airport runways, the dates and times of airplane flights, and the angles of take-off and landing.
 
 
-## Example
+## Example - LAX
 
-> Coming Soon
+To better understand the purpose of the model, it may be instructive to look at a specific example.  In this case, the example will be the PM emissions from the Los Angeles International Airport (LAX) for an arbitrary day in 2012.  The LAX emissions are distributed across a 4km-by-4km modeling grid.  First, a look at the typical 3D modeling of aircraft emissions from LAX in previous CalEPA and US EPA modeling:
+
+![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_simple.png)
+*Figure 1: 3D allocation of LAX PM Emissions, pre-GATE*
+
+Notice that the emissions are centered on the airport, but mostly kept to the ground level, as there was no generally excepted method to allocate airplane emissions in three dimensions.  Contrast this with the standard output from the GATE model:
+
+![Figure 2: 3D allocation of LAX PM Emissions, with GATE](resources/LAX_2012_PM_GATE.png)
+*Figure 2: 3D allocation of LAX PM Emissions, with GATE*
+
+In this case, the take-off and landing emissions are distributed along the typical flight paths from-and-to each airport runway.  The benefit to the GATE approach is increased realism in downstream modeling.  As the model is very fast to run, the increased realism is practically easy to achieve.
 
 
 [Back to Main Readme](../README.md)
