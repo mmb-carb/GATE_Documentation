@@ -10,7 +10,7 @@ To create gridded, 3D aircraft inventories, the GATE process begins with an emis
 ![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_one_lego.png)
 *Figure 1: 3D allocation of LAX PM Emissions, pre-GATE*
 
-Figure 1 above shows how emissions from an airport have typically been distributed in past photochemical models. Emissions are simply placed into a grid cell that covers the geometric centroid of the airport, and possibly one or two grid cells above from that. Without specialized aircraft modeling, the best that was achievable prior to GATE was to model airports as a single point source (that is, with a geometry much like a coal power plant). The goal of the GATE model is to take the next step in improving the realism of how aircraft are portrayed in photochemical modeling.
+Figure 1 above shows how emissions from Los Angeles International airport (LAX) have typically been distributed in past photochemical models. Emissions are simply placed into a grid cell that covers the geometric centroid of the airport, and possibly one or two grid cells above from that. Without specialized aircraft modeling, the best that was achievable prior to GATE was to model airports as a single point source (that is, with a geometry much like a coal power plant). The goal of the GATE model is to take the next step in improving the realism of how aircraft are portrayed in photochemical modeling.
 
 
 ## 3D Flight Paths
