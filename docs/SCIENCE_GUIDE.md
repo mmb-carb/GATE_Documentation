@@ -7,7 +7,7 @@ The purpose of the GATE model is to grid aircraft emissions for photochemical mo
 
 To create gridded, 3D aircraft inventories, the GATE process begins with an emissions inventory.<sub>3</sub> Emissions inventories contain ungridded, sometimes annual, emissions from an airport, by vehicle category. In particular, emissions inventories record aircraft emissions up to about 1km in altitude.<sub>4</sub> These ungridded emissions need to be divided into hourly pieces and accurately placed into 3D grid cells. Aircraft pose a particular problem for inventory gridding, as their emissions are fundamentally more three dimensional than typical area and point sources. As such, aircraft emissions have usually been given a fairly light treatment.
 
-![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_simple.png)
+![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_one_lego.png)
 *Figure 1: 3D allocation of LAX PM Emissions, pre-GATE*
 
 Figure 1 above shows how emissions from an airport have typically been distributed in past photochemical models. Emissions are simply placed into a grid cell that covers the geometric centroid of the airport, and possibly one or two grid cells above from that. Without specialized aircraft modeling, the best that was achievable prior to GATE was to model airports as a single point source (that is, with a geometry much like a coal power plant). The goal of the GATE model is to take the next step in improving the realism of how aircraft are portrayed in photochemical modeling.
