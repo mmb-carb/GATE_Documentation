@@ -28,7 +28,7 @@ The above six-step process is achievable because so much information is publical
 
 To better understand the purpose of the model, it may be instructive to look at a specific example.  In this case, the example will be the PM emissions from the Los Angeles International Airport (LAX) for an arbitrary day in 2012.  The LAX emissions are distributed across a 4km-by-4km modeling grid.  First, a look at the typical 3D modeling of aircraft emissions from LAX in previous CalEPA and US EPA modeling:
 
-![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_simple.png)
+![Figure 1: 3D allocation of LAX PM Emissions, pre-GATE](resources/LAX_2012_PM_one_lego.png)
 *Figure 1: 3D allocation of LAX PM Emissions, pre-GATE*
 
 Notice that the emissions are centered on the airport, but mostly kept to the ground level, as there was no generally excepted method to allocate airplane emissions in three dimensions.  Contrast this with the standard output from the GATE model:
