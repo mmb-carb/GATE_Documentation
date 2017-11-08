@@ -15,9 +15,13 @@ Figure 1 above shows how emissions from Los Angeles International airport (LAX) 
 
 ## 3D Flight Paths
 
+Conceptually, the first step in the GATE model is to calculate the 3D trajectory of planes during their three flight stages: landing, taxiing, and take-off. The easiest trajectories to calculate are for taxiing, which GATE models as happening on the runways. Luckily, the exact latitude and longitude of every runway at every airport in America is widely known, because pilots need that information. The runway locations were retrieved from the AirportIQ 5010<sub>5</sub> database, as shown for LAX in Figure 2 below.
+
+![Figure 2: LAX runways](resources/LAX_2012_runways.png)
+*Figure 2: LAX runways*
+
 > Coming Soon
 
-1. Describe runway information gathering (AirportIQ ref). Show LAX plot and discuss taxiing emissions.
 2. Discuss take-off and landing angles / flight paths.  (refs)
 3. Discuss wireframe model of a runway / airport. Show plot.
 
@@ -57,6 +61,7 @@ Figure 1 above shows how emissions from Los Angeles International airport (LAX) 
 2. [TCEQ 2006 SIP Document - Chapter 2: Photochemical Modeling](http://www.tceq.texas.gov/assets/public/implementation/air/sip/hgb/hgb_sip_2006/06027SIP_proCh2.pdf)
 3. [US EPA NEI homepage](https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei)
 4. [Aircraft Emissions Inventory for Texas Statewide 2014 AERR Inventory and 2008 to 2040 Trend Analysis Years](https://www.tceq.texas.gov/assets/public/implementation/air/am/contracts/reports/ei/582155160603FY1508-20160516-erg-2014_AERR_Inventory_Aircraft_Revised.pdf)
+5. [Airport IQ 5010 database](http://www.gcr1.com/5010web/)
 
 
 [Back to Main Readme](../README.md)
