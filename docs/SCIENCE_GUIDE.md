@@ -27,12 +27,16 @@ In order to simulate these straight, 3D lines for landing and takeoff a few piec
 ![Figure 3: LAX flight paths](resources/LAX_2012_flight_paths.png)
 *Figure 3: LAX flight paths*
 
-
 ## Intersecting Flight Paths with a 3D Grid
+
+The flight paths in Figure 3 have to be intersected with the 3D modeling grid. This is a mathematically hard problem for several reason. First, the grid cells are not truly square, but square along some curved geographic projection. Also, the height of each vertical grid cell is dependent upon the I/J grid location and the meteorology. If the problem were to intersect a line with a regular grid of cubes, or even regular rectangular boxes, it would be much easier. Figure 4 shows how GATE intersects the above LAX flight paths with the 3D modeling grid.
+
+![Figure 4: LAX wire frame](resources/LAX_2012_wire_frame.png)
+*Figure 4: LAX wire frame*
+
 
 > Coming Soon
 
-1. Discuss intersecting wireframe with grid. Show wire frame.
 2. Discuss problem complexity. Give mathematical approach to solution (ref).
 3. Show LAX spatial surrogates (3 x stage), for one runway. Discuss.
 
