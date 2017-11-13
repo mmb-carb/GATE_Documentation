@@ -34,19 +34,19 @@ The flight paths in Figure 3 have to be intersected with the 3D modeling grid. T
 ![Figure 4: LAX wire frame](resources/LAX_2012_wire_frame.png)
 *Figure 4: LAX wire frame*
 
-Finding the grid cells (as show in Figure 4 above) that intersect airplane trajectories is the major technical challenge of the GATE model. Figure 5 shows an exagerated 2D representation of the problem. The actual modeling grid is based on a curved geographic projection, but the airplane trajectories are straight lines. A precise, general, algebraic solution of the intersection of a straight 3D line with a projected 3D grid is possible. But it is extremely slow, as projection calculations must be continuously done at every stage. Figure 5 is also heavily simplified as it does not show that the height of all vertical layers depends on the I/J grid position.
+Finding the grid cells (as show in Figure 4 above) that intersect airplane trajectories is the major technical challenge of the GATE model. Figure 5 shows an exaggerated 2D representation of the problem. The actual modeling grid is based on a curved geographic projection, but the airplane trajectories are straight lines. A precise, general, algebraic solution of the intersection of a straight 3D line with a projected 3D grid is possible. But it is extremely slow, as projection calculations must be continuously done at every stage. Figure 5 is also heavily simplified as it does not show that the height of all vertical layers depends on the I/J grid position.
 
 ![Figure 5: 2D curved grid intersection](resources/curved_grid_intersect.png)
 *Figure 5: 2D curved grid intersection*
 
-Several different solutions were implemented and tested in GATE for the above problem of “intersecting a projected 3D grid with a straight line”. And exact solution was formulated, but it turned out to be prohibitively slow. Bresenham's Line Algorithm<sub>10</sub> was much faster, but less accurate, and was hard to adjust for projected and irregular grids. In the end, a more advanced k-d tree<sub>11</sub> approach was chosen. The SciPy implementation<sub>12</sub> of the k-d tree algorithm was a good balance of performance and accuracy. The k-d tree algorithm can divide any 3D space into a binary search tree, which allows for extremely fast locating of 3d points. Though the algorithm is not exact, it becomes more and more accurate as greater input data is given. In this case, the k-d tree algorithm could be far more accurate if given a 1km grid, rather than a 4km grid.
+Several different solutions were implemented and tested in GATE for the above problem of “intersecting a projected 3D grid with a straight line”. A precise algebraic solution was devised, but it turned out to be prohibitively slow. Bresenham's Line Algorithm<sub>10</sub> was much faster, but less accurate, and was hard to adjust for projected and irregular grids. In the end, a more advanced k-d tree<sub>11</sub> approach was chosen. The SciPy implementation<sub>12</sub> of the k-d tree algorithm was a good balance of performance and accuracy. The k-d tree algorithm can divide any 3D space into a binary search tree, which allows for extremely fast locating of 3d points. Though the algorithm is not exact, it becomes more and more accurate as greater input data is given. In this case, the k-d tree algorithm could be far more accurate if given a 1km grid, rather than a 4km grid.
 
-> Coming Soon
+The end result of all this math is to generate spatial surrogates for each airport. That is, each runway is broken down into three spatial surrogates (landing, taxiing, and takeoff) then all the runway surrogates at a given airport are combined. Then the emissions for each pollutant and aircraft type can be divided into the grid cells defined by the spatial surrogate. Figure 6 shows the end result of the 2012 LAX example that has been built up in this discussion. Shown is the spatial distribution of PM for all airplanes from LAX on the given (arbitrary) day in 2012
 
-3. Show LAX spatial surrogates (3 x stage), for one runway. Discuss.
+![Figure 6: 3D allocation of LAX PM Emissions, with GATE](resources/LAX_2012_PM_GATE.png)
+*Figure 6: 3D allocation of LAX PM Emissions, with GATE*
 
-
-## Applying this to Emissions Inventories
+## Applying 3D Spatial Surrogates to Inventories
 
 > Coming Soon
 
