@@ -34,10 +34,15 @@ The flight paths in Figure 3 have to be intersected with the 3D modeling grid. T
 ![Figure 4: LAX wire frame](resources/LAX_2012_wire_frame.png)
 *Figure 4: LAX wire frame*
 
+Finding the grid cells (as show in Figure 4 above) that intersect airplane trajectories is the major technical challenge of the GATE model. Figure 5 shows an exagerated 2D representation of the problem. The actual modeling grid is based on a curved geographic projection, but the airplane trajectories are straight lines. A precise, general, algebraic solution of the intersection of a straight 3D line with a projected 3D grid is possible. But it is extremely slow, as projection calculations must be continuously done at every stage. Figure 5 is also heavily simplified as it does not show that the height of all vertical layers depends on the I/J grid position.
+
+![Figure 5: 2D curved grid intersection](resources/curved_grid_intersect.png)
+*Figure 5: 2D curved grid intersection*
+
+Several different solutions were implemented and tested in GATE for the above problem of “intersecting a projected 3D grid with a straight line”. And exact solution was formulated, but it turned out to be prohibitively slow. Bresenham's Line Algorithm<sub>10</sub> was much faster, but less accurate, and was hard to adjust for projected and irregular grids. In the end, a more advanced k-d tree<sub>11</sub> approach was chosen. The SciPy implementation<sub>12</sub> of the k-d tree algorithm was a good balance of performance and accuracy. The k-d tree algorithm can divide any 3D space into a binary search tree, which allows for extremely fast locating of 3d points. Though the algorithm is not exact, it becomes more and more accurate as greater input data is given. In this case, the k-d tree algorithm could be far more accurate if given a 1km grid, rather than a 4km grid.
 
 > Coming Soon
 
-2. Discuss problem complexity. Give mathematical approach to solution (ref).
 3. Show LAX spatial surrogates (3 x stage), for one runway. Discuss.
 
 
@@ -72,6 +77,9 @@ The flight paths in Figure 3 have to be intersected with the 3D modeling grid. T
 7. [Pilots, Airplanes, and the Tangent of Three Degrees](https://pumas.nasa.gov/files/10_13_99_1.pdf)
 8. [The typical takeoff and climb angles of all Boeing planes](https://www.bangaloreaviation.com/2009/05/typical-takeoff-and-climb-angles-of-all.html)
 9. [Boeing: Exceeding Tire Speed Rating During Takeoff](http://www.boeing.com/commercial/aeromagazine/articles/qtr_02_09/pdfs/AERO_Q209_article04.pdf)
+10. [Bresenham's Line Algorithm](https://en.wikipedia.org/wiki/Bresenham's_line_algorithm)
+11. [k-d tree Algorithm](https://en.wikipedia.org/wiki/K-d_tree)
+12. [SciPy implementation of k-d trees](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.cKDTree.query.html#scipy.spatial.cKDTree.query)
 
 
 [Back to Main Readme](../README.md)
