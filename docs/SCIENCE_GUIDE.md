@@ -1,7 +1,7 @@
 # The Basic Science in GATE - UNDER CONSTRUCTION
 
 
-## Photochemic Modeling on a 3D Grid
+## Photochemical Modeling on a 3D Grid
 
 The purpose of the GATE model is to grid aircraft emissions for photochemical modeling.<sub>1</sub>  Photochemical modeling is the computational process of calculating atmospheric chemistry on a 3D grid given a complete set of air pollutants and meteorology. Typically, the grid is a regular, nearly square grid in the latitude and longitude directions, with grids from 1km to 36km on edge.<sub>2</sub> In the vertical direction, the 3D grid tends to be smaller near the ground, where people are most interested in accuracy, and much larger aloft. The aim of the GATE model is to correctly place aircraft emissions in such a 3D grid.
 
@@ -20,12 +20,17 @@ Conceptually, the first step in the GATE model is to calculate the 3D trajectory
 ![Figure 2: LAX runways](resources/LAX_2012_runways.png)
 *Figure 2: LAX runways*
 
+An example of the runway information, for the state of California, is provided in the GATE repository in a CSV file:
+
+    GATE/input/default/runway_info_cali_***.csv 
+
 GATE uses straight-line representations for the landing and takeoff paths of airplanes towards a runway. Obviously, this is an approximation, as flight paths curve when planes are closer to the ground. However, this approximation is not as bad as it could be since emissions inventories only record airplane emissions up to 1km. At altitudes higher than 1km, airplanes have much more complicated flight paths and trajectories.
 
 In order to simulate these straight, 3D lines for landing and takeoff a few pieces of information are required. First, the location and orientation of the runway, which is described above. And second, the angles at which planes land or takeoff. As it happens, the most common approach angle for an airport is 3 degrees<sub>6</sub> <sub>7</sub> and the net typical takeoff angle is between 10 and 30 degrees<sub>8</sub> <sub>9</sub>. Since there are a range of possible landing and takeoff angles, GATE models several angles in the accepted range. Figure 3 shows and example of these landing and takeoff paths, for all four runways at the LAX airport.
 
 ![Figure 3: LAX flight paths](resources/LAX_2012_flight_paths.png)
 *Figure 3: LAX flight paths*
+
 
 ## Intersecting Flight Paths with a 3D Grid
 
@@ -48,11 +53,13 @@ The end result of all this math is to generate spatial surrogates for each airpo
 
 ## Applying 3D Spatial Surrogates to Inventories
 
-> Coming Soon
+One important detail of aircraft emissions inventories is that they frequently only provide the emissions for a given county. If that is the case, the first thing GATE does is to divide the county-level emissions among the airports in that county using the average number of yearly flights from each airport.
 
-1. Discuss splitting aircraft emissions by flight stage. (refs)
-2. Show final LAX plot (all runways and stages) and discuss.
-3. Discuss improvements?  (grid intersect and EDMS for stage)
+There is one more piece of complexity needed to understand the spatial 3D surrogates described above, and that is how GATE treats flight stages. Using the logic described above spatial surrogates can be constructed for three separate flight stages of airplanes: landing, taxiing, and takeoff. However, most emission inventories do not separate out aircraft emissions in this detail. They simply provide total emissions for these three stages summed together. This is a result of the emission categories typically defined for airplanes (using SIC, SCC, or EIC categories). Interestingly, the calculations that are used to generate aircraft emissions inventories (say using the EDMS model) involve for more detail that is typically lost in an emission inventory.
+
+To improve the accuracy of the GATE model, before spatial surrogates are applied, the aircraft emissions inventory is broken into landing, taxiing, and takeoff components. The flight stage fractions depend on pollutant and vehicle type. And they were calculated based on modeling data taken from an ARB 2012 interstate flight analysis, undertaken by Dr Cody Howard at ARB. An example of such flight fraction data is provided in the GATE repository in a CSV file:
+
+    GATE/input/default/flight_stage_fractions_***.csv
 
 
 ## Temporal Profiles
@@ -61,6 +68,9 @@ The end result of all this math is to generate spatial surrogates for each airpo
 
 1. Show temporal analysis from BTS (ref) commercial flight data.
 2. Show example temporal profiles
+
+
+## Possible Improvements
 
 
 [Back to Main Readme](../README.md)
