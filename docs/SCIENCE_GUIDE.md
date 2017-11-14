@@ -24,9 +24,9 @@ An example of the runway information, for the state of California, is provided i
 
     GATE/input/default/runway_info_cali_***.csv 
 
-GATE uses straight-line representations for the landing and takeoff paths of airplanes towards a runway. Obviously, this is an approximation, as flight paths curve when planes are closer to the ground. However, this approximation is not as bad as it could be since emissions inventories only record airplane emissions up to 1km. At altitudes higher than 1km, airplanes have much more complicated flight paths and trajectories.
+GATE uses straight-line representations for the landing and takeoff paths of airplanes towards a runway. This is an approximation, as flight paths curve when planes are closer to the ground. However, this approximation is not as bad as it could be since emissions inventories only record airplane emissions up to 1km. At altitudes higher than 1km, airplanes have much more complicated flight paths and trajectories.
 
-In order to simulate these straight, 3D lines for landing and takeoff a few pieces of information are required. First, the location and orientation of the runway, which is described above. And second, the angles at which planes land or takeoff. As it happens, the most common approach angle for an airport is 3 degrees<sub>6</sub> <sub>7</sub> and the net typical takeoff angle is between 10 and 30 degrees<sub>8</sub> <sub>9</sub>. Since there are a range of possible landing and takeoff angles, GATE models several angles in the accepted range. Figure 3 shows and example of these landing and takeoff paths, for all four runways at the LAX airport.
+In order to simulate these straight 3D lines for landing and takeoff, a few pieces of information are required. First, the location and orientation of the runway, which is described above. And second, the angles at which planes land or takeoff. As it happens, the most common approach angle for an airport is 3 degrees<sub>6</sub> <sub>7</sub> and the net typical takeoff angle is between 10 and 30 degrees<sub>8</sub> <sub>9</sub>. Since there are a range of possible landing and takeoff angles, GATE models several angles in the accepted range. Figure 3 shows and example of these landing and takeoff paths, for all four runways at the LAX airport.
 
 ![Figure 3: LAX flight paths](resources/LAX_2012_flight_paths.png)
 *Figure 3: LAX flight paths*
@@ -34,7 +34,7 @@ In order to simulate these straight, 3D lines for landing and takeoff a few piec
 
 ## Intersecting Flight Paths with a 3D Grid
 
-The flight paths in Figure 3 have to be intersected with the 3D modeling grid. This is a mathematically hard problem for several reason. First, the grid cells are not truly square, but square along some curved geographic projection. Also, the height of each vertical grid cell is dependent upon the I/J grid location and the meteorology. If the problem were to intersect a line with a regular grid of cubes, or even regular rectangular boxes, it would be much easier. Figure 4 shows how GATE intersects the above LAX flight paths with the 3D modeling grid.
+The flight paths in Figure 3 have to be intersected with the 3D modeling grid. This is a mathematically hard problem for several reasons. First, the grid cells are not truly square, but square along some curved geographic projection. Also, the height of each vertical grid cell is dependent upon the I/J grid location and the meteorology. If the problem were to intersect a line with a regular grid of cubes, or even regular rectangular boxes, it would be much easier. Figure 4 shows how GATE intersects the above LAX flight paths with the 3D modeling grid.
 
 ![Figure 4: LAX wire frame](resources/LAX_2012_wire_frame.png)
 *Figure 4: LAX wire frame*
@@ -53,7 +53,7 @@ The end result of all this math is to generate spatial surrogates for each airpo
 
 ## Applying 3D Spatial Surrogates to Inventories
 
-Most aircraft emissions inventories is that they frequently only provide the emissions for a given county. If that is the case, the first thing GATE does is to divide the county-level emissions among the airports in that county using the average number of yearly flights from each airport.
+Most aircraft emissions inventories frequently only provide the emissions for a given county. If that is the case, the first thing GATE does is to divide the county-level emissions among the airports in that county using the average number of yearly flights from each airport.
 
 There is one more piece of complexity needed to understand the spatial 3D surrogates described above, and that is how GATE treats flight stages. Using the logic described above spatial surrogates can be constructed for three separate flight stages of airplanes: landing, taxiing, and takeoff. However, most emission inventories do not separate out aircraft emissions in this detail. They simply provide total emissions for these three stages summed together. This is a result of the emission categories typically defined for airplanes (using SIC, SCC, or EIC categories). Interestingly, the calculations that are used to generate aircraft emissions inventories (say using the EDMS model) involve for more detail that is typically lost in an emission inventory.
 
