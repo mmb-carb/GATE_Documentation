@@ -1,4 +1,4 @@
-# GATE Basic Introduction - UNDER CONSTRUCTION
+# GATE Basic Introduction
 
     Gridded Aircraft Trajectory Emissions model
 
