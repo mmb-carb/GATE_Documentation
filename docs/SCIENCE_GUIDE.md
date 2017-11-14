@@ -71,11 +71,6 @@ Real flight data was used to generate the above four temporal profiles. The U.S.
     GATE/input/temporal/aircraft_temporal_profiles_***.csv 
 
 
-## Possible Improvements
-
-> Coming Soon
-
-
 [Back to Main Readme](../README.md)
 
 
