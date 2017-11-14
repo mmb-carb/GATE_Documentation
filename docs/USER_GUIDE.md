@@ -319,14 +319,14 @@ This is a short string with a version number or identifying note.  It is put int
 
 > path to SMOKE-style GSPRO file
 
-The GSPRO and GSREF files together form a complete mapping from EIC-source category to chemical speciation.  The GSPRO and GSREF file formats were chosen from SMOKE v3.7 so that they would be standard formats that people in the community would already be familiar with.  You can find a detailed explaination of the GSPRO file format in the official documentation [here](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s05s02.html).
+The GSPRO and GSREF files together form a complete mapping from EIC-source category to chemical speciation.  The GSPRO and GSREF file formats were chosen from SMOKE v4.0 so that they would be standard formats that people in the community would already be familiar with.  You can find a detailed explaination of the GSPRO file format in the official documentation [here](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s05s02.html).
 
 
 #### GSREF_FILE
 
 > path to SMOKE-style GSREF file
 
-The GSPRO and GSREF files together form a complete mapping from EIC-source category to chemical speciation.  The GSPRO and GSREF file formats were chosen from SMOKE v3.7 so that they would be standard formats that people in the community would already be familiar with.  You can find a detailed explaination of the GSREF file format in the official documentation [here](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s05s04.html).
+The GSPRO and GSREF files together form a complete mapping from EIC-source category to chemical speciation.  The GSPRO and GSREF file formats were chosen from SMOKE v4.0 so that they would be standard formats that people in the community would already be familiar with.  You can find a detailed explaination of the GSREF file format in the official documentation [here](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s05s04.html).
 
 
 #### WEIGHT_FILE
