@@ -1,4 +1,4 @@
-# The Basic Science in GATE - UNDER CONSTRUCTION
+# The Basic Science in GATE
 
 
 ## Photochemical Modeling on a 3D Grid
