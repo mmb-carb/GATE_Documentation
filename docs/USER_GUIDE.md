@@ -1,7 +1,5 @@
 # GATE Model Usage Guide
 
-> UNDER CONSTRUCTION. This article is a work in progress.
-
 What follows is a description of all the configurable variables in the GATE model.  Though the GATE model is a single, monolythic Python script, it has quite a few configurable variables.  Each variable can be set in two ways:
 
 1. In the script itself, in the "USER CONFIGURABLES" section.
