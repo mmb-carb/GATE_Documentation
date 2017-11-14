@@ -53,7 +53,7 @@ The end result of all this math is to generate spatial surrogates for each airpo
 
 ## Applying 3D Spatial Surrogates to Inventories
 
-One important detail of aircraft emissions inventories is that they frequently only provide the emissions for a given county. If that is the case, the first thing GATE does is to divide the county-level emissions among the airports in that county using the average number of yearly flights from each airport.
+Most aircraft emissions inventories is that they frequently only provide the emissions for a given county. If that is the case, the first thing GATE does is to divide the county-level emissions among the airports in that county using the average number of yearly flights from each airport.
 
 There is one more piece of complexity needed to understand the spatial 3D surrogates described above, and that is how GATE treats flight stages. Using the logic described above spatial surrogates can be constructed for three separate flight stages of airplanes: landing, taxiing, and takeoff. However, most emission inventories do not separate out aircraft emissions in this detail. They simply provide total emissions for these three stages summed together. This is a result of the emission categories typically defined for airplanes (using SIC, SCC, or EIC categories). Interestingly, the calculations that are used to generate aircraft emissions inventories (say using the EDMS model) involve for more detail that is typically lost in an emission inventory.
 
@@ -64,13 +64,16 @@ To improve the accuracy of the GATE model, before spatial surrogates are applied
 
 ## Temporal Profiles
 
-> Coming Soon
+Most aircraft emissions inventories only report annual emissions. In those cases, GATE is designed to divide the annual totals into hourly pieces to support photochemical modeling. First, monthly temporal profiles divide the annual emissions into 12 pieces. Then, temporal profiles split the emissions again by day-of-week. Finally, two diurnal profiles exist to turn a single day's emissions into 24 hourly components: one for weekdays and one for weekends.
 
-1. Show temporal analysis from BTS (ref) commercial flight data.
-2. Show example temporal profiles
+Real flight data was used to generate the above four temporal profiles. The U.S. Bureau of Transportation Statistics<sub>13</sub> database was pulled for all commercial flights in California from 2002 to 2015. Flight times were binned to get the above four temporal profiles for all California airports. But also the largest 10 airports in California were analyzed individually using their own flight data to more accurately represent their flight times and temporal profiles. An example of these temporal profiles is provided in the GATE repository in a CSV file at:
+
+    GATE/input/temporal/aircraft_temporal_profiles_***.csv 
 
 
 ## Possible Improvements
+
+> Coming Soon
 
 
 [Back to Main Readme](../README.md)
@@ -90,6 +93,7 @@ To improve the accuracy of the GATE model, before spatial surrogates are applied
 10. [Bresenham's Line Algorithm](https://en.wikipedia.org/wiki/Bresenham's_line_algorithm)
 11. [k-d tree Algorithm](https://en.wikipedia.org/wiki/K-d_tree)
 12. [SciPy implementation of k-d trees](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.cKDTree.query.html#scipy.spatial.cKDTree.query)
+13. [Bureau of Transportation Statistics](https://www.transtats.bts.gov/Tables.asp?DB_ID=111&DB_Name=Air%20Carrier%20Statistics%20%28Form%2041%20Traffic%29-%20All%20Carriers&DB_Short_Name=Air%20Carriers)
 
 
 [Back to Main Readme](../README.md)
