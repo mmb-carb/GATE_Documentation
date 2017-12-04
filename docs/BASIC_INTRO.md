@@ -17,7 +17,7 @@ The GATE model takes annual, ungridded aircraft emissions during: landing, taxii
 1. Read aircraft emissions from an annual inventory
 2. Split the emissions into hourly components
 3. Split any county-wide emissions into individual runways
-4. 4. Geometrically model the 3D flight paths at each runway
+4. Geometrically model the 3D flight paths at each runway
 5. Intersect the above 3D paths with the 3D modeling grid
 6. Distribute the hourly aircraft emissions into the 3D grid
 
