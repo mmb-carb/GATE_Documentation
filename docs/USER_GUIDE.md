@@ -1,6 +1,6 @@
 # GATE Model Usage Guide
 
-What follows is a description of all the configurable variables in the GATE model.  Though the GATE model is a single, monolythic Python script, it has quite a few configurable variables.  Each variable can be set in two ways:
+What follows is a description of all the configurable variables in the GATE model.  Though the GATE model is a single, monolythic Python v3 script, it has quite a few configurable variables.  Each variable can be set in two ways:
 
 1. In the script itself, in the "USER CONFIGURABLES" section.
 2. From the command line.
@@ -175,30 +175,30 @@ And from the command line that might look like:
 
 > path to CSV with lat/lons for all runways
 
-This is a path to a CSV file with a complete description of the location of every runway (and helipad) in the modeling domain.  An example CSV might look like:
+This is a path to a CSV file with a complete description of the location of every runway in the modeling domain.  An example CSV might look like:
 
-    airport,region,runway,flights,land_lat,land_lon,takeoff_lat,takeoff_lon
-    LAX,59,06L/24R,158967.0,33.9491124722,-118.431159861,33.9521039167,-118.401948917
-    LAX,59,06R/24L,158967.0,33.9467474722,-118.435327222,33.9501944444,-118.401668667
-    LAX,59,07L/25R,158967.0,33.9358305833,-118.41934175,33.9398771944,-118.379776944
-    LAX,59,07R/25L,158967.0,33.9336493889,-118.419018333,33.9373630278,-118.382713917
-    SFO,44,01L/19R,107991.5,37.607897,-122.382928,37.62648025,-122.370609028
-    SFO,44,01R/19L,107991.5,37.6063290833,-122.381040361,37.6273412222,-122.367110361
-    SFO,44,10L/28R,107991.5,37.6287386111,-122.393391139,37.6135323611,-122.357141028
-    SFO,44,10R/28L,107991.5,37.6262900278,-122.393105417,37.6117091389,-122.358342
-    FAUX8009H,57,H,1.0,34.464612,-120.039316,H,H
-    FAUX8013H,81,H,10.0,34.469136,-120.680817,H,H
+    airport,region,runway,flights_comjet,flights_other,land_lat,land_lon,takeoff_lat,takeoff_lon
+    LAX,59,06L/24R,142069,16996,33.9491124722,-118.431159861,33.9521039167,-118.401948917
+    LAX,59,06R/24L,142069,16996,33.9467474722,-118.435327222,33.9501944444,-118.401668667
+    LAX,59,07L/25R,142069,16996,33.9358305833,-118.41934175,33.9398771944,-118.379776944
+    LAX,59,07R/25L,142069,16996,33.9336493889,-118.419018333,33.9373630278,-118.382713917
+    SFO,44,01L/19R,94912,16543,37.607897,-122.382928,37.62648025,-122.370609028
+    SFO,44,01R/19L,94912,16543,37.6063290833,-122.381040361,37.6273412222,-122.367110361
+    SFO,44,10L/28R,94912,16543,37.6287386111,-122.393391139,37.6135323611,-122.357141028
+    SFO,44,10R/28L,94912,16543,37.6262900278,-122.393105417,37.6117091389,-122.358342
+    FAUX8400589,69,12/30,0,250,34.132744,-115.953426,34.122404,-115.948046
 
 It is worth explaining the columns in the above CSV file:
 
-* **airport** - Official FAA airport code.  In the example above two official FAA airport codes are listed: LAX in Los Angeles and SFO in San Francisco. There are also two fake (faux) FAA codes listed, which were generated ad-hoc for a couple of helicopter landing pads: FAUX8009H and FAUX8013H.
-* **region** - This is a single number to match the given airport/helipad with the region.  This region code must match the region code used elsewhere in the modeling.
-* **runway** - This is a string representing the runway.  Many airports, and all major airports, have several runways.  In order to model aircraft emissions, we need to model each runway at an airport individually.  These strings can be any ad hoc string, though it is preferable to use official FAA code where possible. Notice that this field is meaningless for helicopter landing pads and so there the default value `H` is used.
-* **flights** - Average number of flights per year.  This can be a decimal because it is an average.  Also, it should be noticed that in practice the average number of flights per year is not well known for smaller airports and helipads.
-* **land_lat** - This is the latitude of the landing side of the runway.  A runway is straight line it is defined by two lat/lon points.  In the case of helipads, there is only one point, which we here call the landing side.
-* **land_lon** - This is the longitude of the landing side of the runway.  A runway is straight line it is defined by two lat/lon points.  In the case of helipads, there is only one point, which we here call the landing side.
-* **takeoff_lat** - This is the latitude of the take-off side of the runway.  A runway is straight line it is defined by two lat/lon points.  In the case of helipads, this takes the default value `H`.
-* **takeoff_lon** - This is the longitude of the take-off side of the runway.  A runway is straight line it is defined by two lat/lon points.  In the case of helipads, this takes the default value `H`.
+* **airport** - Official FAA airport code.  In the example above two official FAA airport codes are listed: LAX in Los Angeles and SFO in San Francisco. There are also a fake (faux) FAA code listed, which were generated ad-hoc for an airport that was small enough that it is not federall registered (in this case an off-shore oil-drilling platform): FAUX8400589.
+* **region** - This is a single number to match the given airport with a region.  This region code must match the region code used elsewhere in the modeling.
+* **runway** - This is a string representing the runway.  Many airports, and all major airports, have several runways.  In order to model aircraft emissions, we need to model each runway at an airport individually.  These strings can be any ad hoc string, though it is preferable to use official FAA code where possible.
+* **flights_comjet** - Average number of flights for commercial jets per year.  Also, it should be noticed that in practice the average number of flights per year is not well known for smaller airports.
+* **flights_other** - Average yearly number of flights for all non-military airplanes except commercial jets.  again, the number of flights per year is less certain for smaller airports.
+* **land_lat** - This is the latitude of the landing side of the runway.  A runway is straight line it is defined by two lat/lon points.
+* **land_lon** - This is the longitude of the landing side of the runway.  A runway is straight line it is defined by two lat/lon points.
+* **takeoff_lat** - This is the latitude of the take-off side of the runway.  A runway is straight line it is defined by two lat/lon points.
+* **takeoff_lon** - This is the longitude of the take-off side of the runway.  A runway is straight line it is defined by two lat/lon points.
 
 A good source of data for the lat/lon locations of the each end of every runway in America can be found on the commercial [Airport IQ 5010](http://www.gcr1.com/5010web/) website.
 
@@ -230,7 +230,7 @@ This file needs to incorporate both EIC and SCC codes because the CARB inventory
 
 > path to FF10 file with area source emissions
 
-This FF10 inventory file is the input for the region-wide, pre-gridded aircraft emissions.  That is, if the yearly inventory do not include aircraft emissions for a specific airport or helipad, but just have aircraft emissions for an entire county, those emissions need to go into this file.  It should be noted, this option will accept a list of such files, not just one.
+This FF10 inventory file is the input for the region-wide, pre-gridded aircraft emissions.  That is, if the yearly inventory do not include aircraft emissions for a specific airport, but just have aircraft emissions for an entire county, those emissions need to go into this file.  It should be noted, this option will accept a list of such files, not just one.
 
 The FF10 format looks much like a CSV, but has a multi-line comment header.  The FF10 format supported by GATE is not an original file format, but is taken direclty from the SMOKE model, version 3.7.  For a complete manual on this file format, see [this section](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s02.html) of the SMOKE manual.
 
@@ -239,7 +239,7 @@ The FF10 format looks much like a CSV, but has a multi-line comment header.  The
 
 > path to FF10 file with point source emissions
 
-This FF10 inventory file is the input for the point-source, pre-gridded aircraft emissions.  That is, if the yearly inventory include aircraft emissions for specific airports / helipads, those emissions need to go into this file.  It should be noted, this option will accept a list of such files, not just one.
+This FF10 inventory file is the input for the point-source, pre-gridded aircraft emissions.  That is, if the yearly inventory include aircraft emissions for specific airports, those emissions need to go into this file.  It should be noted, this option will accept a list of such files, not just one.
 
 The FF10 format looks much like a CSV, but has a multi-line comment header.  The FF10 format supported by GATE is not an original file format, but is taken direclty from the SMOKE model, version 3.7.  For a complete manual on this file format, see [this section](https://www.cmascenter.org/smoke/documentation/3.7/html/ch08s02.html) of the SMOKE manual.
 
@@ -274,7 +274,7 @@ Then their `region_strings.csv` file would be trivial:
 
 > path to CSC file with airport FAA codes
 
-This CSV file contains flight code information about airports and helipads.  In specific, it maps a numerical ID for a given facility in the point source inventory (FF10) files, to an official `FFA_LID` code.  The user can include such a mapping for all the airports and helipads in their model, but the FF10 file format for area sources does not include specific airports/helipads, so this file will need be used for area source emissions.
+This CSV file contains flight code information about airports.  In specific, it maps a numerical ID for a given facility in the point source inventory (FF10) files, to an official `FFA_LID` code.  The user can include such a mapping for all the airports in their model, but the FF10 file format for area sources does not include specific airports, so this file will need be used for area source emissions.
 
 The provide example file that comes with GATE looks like this:
 
