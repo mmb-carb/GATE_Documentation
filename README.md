@@ -21,7 +21,7 @@ For more information about how to use GATE, please see:
 
 For more information about the airport temporal profile, please see:
 
-* [Airport Temporal Profile](docs/Airport_Temporal_Profile.md)
+* [Airport Temporal Profile](docs/Airport Temporal Profile Update Documentation.docx)
 
 
 ## Open-Source Licence
