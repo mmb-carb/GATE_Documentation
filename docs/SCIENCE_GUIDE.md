@@ -64,9 +64,9 @@ To improve the accuracy of the GATE model, before spatial surrogates are applied
 
 ## Temporal Profiles
 
-Most aircraft emissions inventories only report annual emissions. In those cases, GATE is designed to divide the annual totals into hourly pieces to support photochemical modeling. First, monthly temporal profiles divide the annual emissions into 12 pieces. Then, temporal profiles split the emissions again by day-of-week. Finally, two diurnal profiles exist to turn a single day's emissions into 24 hourly components: one for weekdays and one for weekends.
+Most aircraft emissions inventories only report annual emissions. In those cases, GATE is designed to divide the annual totals into hourly pieces to support photochemical modeling. First, annual totals are divided by the number of days in the year to get average daily emissions. Then a scaling factor is applied to each day which is the product of user provided monthly, day of week, and diurnal factors (for hourly emissions). Two diurnal profiles exist to turn a single day's emissions into 24 hourly components: one for weekdays and one for weekends.
 
-Real flight data was used to generate the above four temporal profiles. The U.S. Bureau of Transportation Statistics<sub>13</sub> database was pulled for all commercial flights in California from 2002 to 2015. Flight times were binned to get the above four temporal profiles for all California airports. But also the largest 10 airports in California were analyzed individually using their own flight data to more accurately represent their flight times and temporal profiles. An example of these temporal profiles is provided in the GATE repository in a CSV file at:
+Real flight data was used to generate the above four temporal profiles. The U.S. Bureau of Transportation Statistics<sub>13</sub> database was pulled for all commercial flights in California. Flight times were binned to get the above four temporal profiles for all California airports. But also, airports were analyzed individually using their own flight data to more accurately represent their flight times and temporal profiles. An example of these temporal profiles is provided in the GATE repository in a CSV file at:
 
     GATE/input/temporal/aircraft_temporal_profiles_***.csv 
 
